@@ -11,9 +11,9 @@ class PostsController < ApplicationController
    def create
      @post = Post.new(params.require(:post).permit(:title, :link, :body, :post_type))
      if @post.save
-       redirect_to posts_path, flash: { notice: "Thanks for submitting your post!" }
+       redirect_to posts_path, flash: { 'alert-success' => "Thanks for submitting your post!" }
      else
-      flash[:error] = @post.errors.full_messages
+      flash[:'alert-danger'] = @post.errors.full_messages
       render :new
      end
    end
