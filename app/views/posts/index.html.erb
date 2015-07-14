@@ -2,6 +2,15 @@
 
 <ul>
   <% @posts.each do |post| %>
-  <li><%= post.title %></li>
+
+  <div class="title">
+    <li><a href="<%= post.link %>" target="_blank"><%= post.title %></a></li>
+  </div>
+
+  <div class="tagline">
+    Submitted at <%= post.created_at %>
+  </div>
+
   <% end %>
+
 </ul>
