@@ -7,8 +7,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container wrap">
+    <div class="row">
+      <div class="col-xs-12">
+        <header>
+          <div class="well">BLU/it by ESH</div>
+        </header>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <main>
+            <div class="well">
+              <!-- BEGIN main content -->
+              <%= yield %>
+              <!-- END main content -->
+            </div>
+          </main>
+        </div>
+        <div class="col-xs-4">
+          <nav id="sidebar">
+            <div class="well">Sidebar</div>
+          </nav>
+        </div>
+      </div>
+    </div>
+<div class="push"></div>
+  </div>
+  <footer>
+    <div class="well">Sticky Footer</div>
+  </footer>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
