@@ -4,7 +4,6 @@ class Category < ActiveRecord::Base
   validates :description, length: { maximum: 500 }
   validates :sidebar, length: { maximum: 500 }
   validates :submission_text, length: { maximum: 1024 }
-  validates :category_id, presence: true
 
   has_many :posts
 end
