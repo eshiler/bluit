@@ -1,19 +1,17 @@
 <h1>Posts</h1>
 
 <ul class="posts">
-
-  <% @posts.each do |post| %>
-
-  <div class="title">
-    <li>
+<% @posts.each do |post| %>
+  <li>
+    <div class="title">
       <%= link_to post.title, post_link(post) %>
-    </li>
-  </div>
-
-  <div class="tagline" title="<%= post.created_at %>">
-    Submitted <%= time_ago_in_words post.created_at %> ago
-  </div>
-
-  <% end %>
-
+    </div>
+    <div class="tagline" title="<%= post.created_at %>">
+      submitted <%= time_ago_in_words post.created_at %> ago
+    </div>
+    <ul class="actions">
+      <li><%= link_to 'edit', edit_post_path(post) %></li>
+    </ul>
+  </li>
+<% end %>
 </ul>
