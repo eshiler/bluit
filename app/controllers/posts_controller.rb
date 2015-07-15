@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
+
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
    def index
      @posts = Post.all
    end
 
    def show
-     @post = Post.find params[:id]
    end
 
    def new
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
    end
 
    def create
-     find_post
+     @post = Post.new post_params
      if @post.save
        redirect_to posts_path, flash: { 'alert-success' => "Thanks for submitting your post!" }
      else
@@ -23,16 +25,22 @@ class PostsController < ApplicationController
    end
 
    def edit
-     find_post
    end
 
    def update
-     find_post
      if @post.update post_params
        redirect_to posts_path, flash: { 'alert-success' => "Your post has been updated." }
      else
        flash.now[:'alert-danger'] = @post.errors.full_messages
        render :edit
+     end
+   end
+
+   def destroy
+     if @post.destroy
+       redirect_to posts_path, flash: { :'alert-success' => "Your post has been deleted."}
+     else
+       redirect_to posts_path, flash: { :'alert-danger' => "That post could not be deleted. It was probably gone."}
      end
    end
 
