@@ -1,4 +1,10 @@
 class CategoriesController < ApplicationController
+
+  before_action :find_category, only: [:show]
+
+  def show
+  end
+
   def new
     @category = Category.new
   end
@@ -6,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new category_params
     if @category.save
-      redirect_to posts_path, flash: { 'alert-success' => "Your category has been created. OH GOOD FOR YOU!" }
+      redirect_to posts_path, flash: { 'alert-success' => "Your category has been created." }
     else
      flash.now[:'alert-danger'] = @category.errors.full_messages
      render :new
