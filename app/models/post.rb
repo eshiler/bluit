@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   validates :link, length: { maximum: 2000 }
   validates :link, presence: true, if: :link?
   validates :body, presence: true, if: :text?
+
+  belongs_to :category 
 end
