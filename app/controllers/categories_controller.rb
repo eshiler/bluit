@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_action :find_category, only: [:show]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
   def show
     @posts = @category.posts.page(params[:page])

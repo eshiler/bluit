@@ -35,6 +35,16 @@
           </ul>
         </nav>
       <header><%= link_to 'BLU.it by ESH', root_path %></header>
+      <div id="session_actions">
+        <% if user_signed_in? %>
+        <%= link_to current_user.username, edit_user_registration_path(current_user) %>
+        <span class="separator">|</span>
+        <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+        want to join? <%= link_to 'login', new_user_session_path %>
+        or <%= link_to 'register', new_user_registration_path %>
+        <% end %>
+      </div>
       </div>
     </div>
     <div class="container">
@@ -49,12 +59,16 @@
         </div>
         <div class="col-xs-4">
           <nav id="sidebar">
+            <% if user_signed_in? %>
               <%= link_to '+ Link Post', new_post_path %>
               <%= link_to '+ Text Post', new_post_path(post_type: :text) %>
               <%= link_to '+ Category', new_category_path %>
               <div>
                 <%= yield :sidebar %>
               </div>
+              <% else %>
+                <%= yield :sidebar %>
+              <% end %>
           </nav>
         </div>
       </div>
