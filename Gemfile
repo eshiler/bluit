@@ -49,7 +49,7 @@ group :development, :test do
   gem 'spring'
 
 group :production do
-  gem 'fails_12factor'  
+  gem 'rails_12factor'  
 end
 
 end
