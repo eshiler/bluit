@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   default_scope { order(updated_at: :desc).includes(:category).includes(:user) }
-  self.per_page = 1
+  self.per_page = 5
 
   acts_as_commentable
 end
