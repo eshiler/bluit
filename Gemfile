@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate'
 gem 'devise'
 gem 'acts_as_commentable_with_threading'
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -49,7 +50,7 @@ group :development, :test do
   gem 'spring'
 
 group :production do
-  gem 'rails_12factor'  
+  gem 'rails_12factor'
 end
 
 end

@@ -4,4 +4,7 @@
 'comments') %></li>
 <li><%= link_to 'edit', edit_post_path(post) %></li>
   <li><%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <li>
+  <%= link_to 'save', save_post_path(post), method: :post %>
+  </li>
 </ul>

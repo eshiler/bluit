@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :save]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
    def index
@@ -45,6 +45,13 @@ class PostsController < ApplicationController
      else
        redirect_to posts_path, flash: { :'alert-danger' => "That post could not be deleted. It was probably gone."}
      end
+   end
+
+   def save
+     Enotes.create_from @post
+     redirect_to @post, :'alert-success' => 'Saved to Enote!'
+   rescue
+     redirect_to @post, :'alert-danger' => 'We were unalble to save that to Enotes.'
    end
 
   private
